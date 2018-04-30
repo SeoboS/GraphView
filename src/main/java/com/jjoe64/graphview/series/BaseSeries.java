@@ -443,7 +443,7 @@ public abstract class BaseSeries<E extends DataPointInterface> implements Series
     public void appendData(E dataPoint, boolean scrollToEnd, int maxDataPoints, boolean silent) {
         checkValueOrder(dataPoint);
 
-        if (!mData.isEmpty() && dataPoint.getX() < mData.get(mData.size()-1).getX()) {
+        if (!mData.isEmpty() && dataPoint.getX() <= mData.get(mData.size()-1).getX()) {
             throw new IllegalArgumentException("new x-value must be greater then the last value. x-values has to be ordered in ASC.");
         }
         synchronized (mData) {
